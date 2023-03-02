@@ -4,7 +4,7 @@ function App() {
 	return (
 		<Router>
 			<Routes>
-				<Routes path="/" element={<Error />} />
+				<Route path="/" element={<Error />} />
 			</Routes>
 		</Router>
 	);
