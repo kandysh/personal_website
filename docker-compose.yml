@@ -7,6 +7,21 @@ services:
       - '80:80'
       - '81:81'
       - '443:443'
+    networks:
+      - xyz
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
+  pws:
+    image: 'pws'
+    restart: unless-stopped
+    networks:
+      - xyz
+  japi:
+    image: 'kandysh/jamapi:latest'
+    restart: unless-stopped
+    networks:
+      - xyz
+networks:
+  xyz:
+    driver: bridge
