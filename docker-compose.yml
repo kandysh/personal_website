@@ -13,13 +13,20 @@ services:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
   pws:
-    image: 'pws'
+    image: 'kandysh/pws:latest'
     restart: unless-stopped
     networks:
       - xyz
   japi:
     image: 'kandysh/jamapi:latest'
     restart: unless-stopped
+    networks:
+      - xyz
+  jdoc:
+    image: 'redocly/redoc'
+    restart: unless-stopped
+    environment:
+      - SPEC_URL=https://jamapi.kandysh.xyz/openapi.json
     networks:
       - xyz
 networks:
