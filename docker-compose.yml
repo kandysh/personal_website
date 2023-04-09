@@ -1,6 +1,6 @@
 version: '3'
 services:
-  app:
+ app:
     image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
     ports:
@@ -27,6 +27,11 @@ services:
     restart: unless-stopped
     environment:
       - SPEC_URL=https://jamapi.kandysh.xyz/openapi.json
+    networks:
+      - xyz
+  japp:
+    image: 'kandysh/jamapp:latest'
+    restart: unless-stopped
     networks:
       - xyz
 networks:
